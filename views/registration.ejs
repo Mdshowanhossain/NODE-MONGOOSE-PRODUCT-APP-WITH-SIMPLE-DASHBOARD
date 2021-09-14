@@ -1,0 +1,26 @@
+<%-include ('./partials/navbar.ejs') -%>
+
+    <section class="container mt-5">
+        <form action="/signup/signUpPostData" method="POST" type="application/x-www-urlencoded">
+            <div class="row mt-5">
+                <div class="col-5">
+                    <label for="title">Username</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                        placeholder="Enter username" name="name" required />
+                </div>
+                <div class="col-5">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter useremail" name="email"
+                        required />
+                </div>
+                <div class="col-5 mt-5">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password"
+                        name="password" required />
+                </div>
+                <div class="col-5 mt-5">
+                    <button type="submit" class="submitbtn">SEND</button>
+                </div>
+            </div>
+        </form>
+    </section>

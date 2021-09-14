@@ -1,0 +1,22 @@
+<%-include ('partials/navbar')-%>
+
+
+    <section class="container mt-5">
+        <form action="/login/post" method="POST" type="application/x-www-urlencoded">
+            <div class="row mt-5">
+                <div class="col-5">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter useremail" name="email"
+                        required />
+                </div>
+                <div class="col-5 ">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password"
+                        name="password" required />
+                </div>
+                <div class="col-5 mt-5 d-flex align-items-center justify-content-center">
+                    <button type="submit" class="submitbtn">SEND</button>
+                </div>
+            </div>
+        </form>
+    </section>

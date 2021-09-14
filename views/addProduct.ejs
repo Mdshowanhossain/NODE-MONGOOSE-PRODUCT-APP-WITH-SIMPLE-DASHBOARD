@@ -1,0 +1,36 @@
+<%- include('partials/navbar')%>
+
+    <body>
+        <section class="container mt-5">
+            <form action="/addproduct/add" method="POST" type="application/x-www-urlencoded"
+                enctype="multipart/form-data">
+                <div class="row mt-5">
+                    <div class="col-5">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp"
+                            placeholder="Enter Title" name="title" required />
+                    </div>
+                    <div class="col-3">
+                        <label for="">Price</label>
+                        <input type="text" class="form-control" id="price" aria-describedby="emailHelp"
+                            placeholder="Price" name="price" required />
+                    </div>
+                    <div class="col-3">
+                        <label for="image">Upload Image</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8 col-12 col-md-8 mt-5 ">
+                            <label for="description">Description</label>
+                            <textarea type="text" class="form-control" id="description" placeholder="Description"
+                                name="description"></textarea>
+                        </div>
+                        <div class="col-3 col-12 col-md-3 mt-5">
+                            <button class="ms-5" type="submit">SEND</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </body>

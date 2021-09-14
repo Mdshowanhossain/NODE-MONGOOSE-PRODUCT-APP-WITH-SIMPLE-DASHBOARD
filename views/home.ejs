@@ -1,0 +1,36 @@
+<!-- NAVBAR START -->
+<%- include('partials/navbar') %>
+    <!-- NAVBAR END -->
+
+    <body>
+        <!-- CARD START -->
+        <section class="container mt-5">
+            <div class="row">
+                <% productData.forEach((data)=>{%>
+                    <div class="col-md-4 col-lg-4 col-12">
+                        <div class="card mt-5" style="width: 18rem;">
+                            <img src="/uploads/images/<%=data.image%>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%=data.title%>
+                                </h5>
+                                <p class="card-text desc">
+                                    <%=data.description%>
+                                </p>
+                                <small class="card-text text-muted">
+                                    Price: <%=data.price%>
+                                </small>
+                                <small class="card-text text-muted float-end">
+                                    Update: <%=data.updatedAt.toLocaleDateString()%>
+                                </small>
+                                <p class="mt-3 text-center">
+                                    <a href="show/<%=data._id%>" class="">Read More</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% })%>
+            </div>
+        </section>
+        <!-- CARD END -->
+    </body>

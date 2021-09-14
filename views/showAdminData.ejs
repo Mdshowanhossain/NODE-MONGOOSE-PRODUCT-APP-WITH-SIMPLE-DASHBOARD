@@ -1,0 +1,56 @@
+<%- include('partials/navbar')%>
+
+    <div class="container mt-5">
+        <h2 class="my-5 text-center">THIS IS DASHBOARD</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">PRODUCT ID</th>
+                    <th scope="col">TITLE</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col">IMAGE</th>
+                    <th scope="col">CREATE</th>
+                    <th scope="col">OPTION</th>
+                    <th scope="col">OPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% findAdminData.forEach((data)=>{%>
+                    <tr>
+                        <th scope="row">
+                            <%=data._id%>
+                        </th>
+                        <td>
+                            <%=data.title%>
+                        </td>
+                        <td>
+                            <%=data.price%>
+                        </td>
+                        <td style="text-align: justify; letter-spacing:.03rem">
+                            <%=data.description%>
+                        </td>
+                        <td>
+                            <img class="table-img" src="/uploads/images/<%=data.image%>" alt="">
+                        </td>
+                        <td>
+                            <small>
+                                <%=data.createdAt.toLocaleString()%>
+                            </small>
+                        </td>
+                        <td>
+                            <!-- <form href="/admin/edit>" method="POST">
+                                <button type="submit">EDIT</button>
+                            </form> -->
+                            <a href="/admin/edit/<%=data._id%>">EDIT</a>
+                        </td>
+                        <td>
+                            <form action="/admin/delete/<%=data._id%>" method="POST">
+                                <button type="submit">DELETE</button>
+                            </form>
+                        </td>
+                    </tr>
+            </tbody>
+            <% })%>
+        </table>
+    </div>

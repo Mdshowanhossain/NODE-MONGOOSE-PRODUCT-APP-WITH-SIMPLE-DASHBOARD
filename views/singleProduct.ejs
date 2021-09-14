@@ -1,0 +1,29 @@
+<!-- NAVBAR START -->
+<%- include('partials/navbar') %>
+    <!-- NAVBAR END -->
+
+    <body>
+        <!-- CARD START -->
+        <section class="container mt-5">
+            <div class="row">
+                <div class="card bg-dark text-white mb-5">
+                    <img src="/uploads/images/<%=findProductData.image%>" class="card-img show-img" alt="...">
+                    <div class="">
+                        <h5 class="card-title text-center mt-3">
+                            <%=findProductData.title%>
+                        </h5>
+                        <p class="card-text text-center">
+                            <%=findProductData.description%>
+                        </p>
+                        <small class="card-text ">
+                            Price: <%=findProductData.price%>
+                        </small>
+                        <small class="card-text float-end mb-3">
+                            Update: <%=findProductData.updatedAt.toLocaleDateString()%>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CARD END -->
+    </body>
