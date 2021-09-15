@@ -24,9 +24,9 @@ router.get('/managedata', async (req, res) => {
 });
 
 router.get('/edit/:id', async (req, res) => {
-    console.log(req.params.id)
     try {
-        const getEditData = await ProductSchema.find({ _id: req.params.id });
+        let getEditData = await ProductSchema.findById({ _id: req.params.id });
+
         res.render('edit', { getEditData: getEditData })
     }
     catch (err) {
@@ -37,36 +37,24 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 
-router.post('/edit/:id', async (req, res) => {
-
+router.post('/edits/:id', async (req, res) => {
+    console.log('postData', req.params.id)
+    console.log('BODY', req.body)
     try {
-        const editData = await ProductSchema.updateOne({ _id: req.params.id }, {
+        await ProductSchema.updateOne({ _id: req.params.id }, {
             $set: {
                 title: req.body.title,
                 description: req.body.description,
                 price: req.body.price,
             }
         });
-        console.log(editData.title)
         res.redirect('/');
     }
     catch (err) {
-        console.log(err.message);
+        res.send(err.message);
         console.log(err.message);
     }
-
-
-
 })
-
-
-
-
-
-
-
-
-
 router.post('/delete/:id', async (req, res) => {
     try {
         await ProductSchema.deleteOne({ _id: req.params.id });
@@ -76,7 +64,5 @@ router.post('/delete/:id', async (req, res) => {
         res.send(err.message);
     }
 });
-
-
 
 module.exports = router;

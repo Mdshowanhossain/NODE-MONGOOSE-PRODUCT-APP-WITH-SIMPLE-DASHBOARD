@@ -1,6 +1,9 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 require('./DB/db');
+require('dotenv').config();
+
 
 
 const HomeRouter = require('./routes/homeRouter');
@@ -9,8 +12,9 @@ const AdminRouter = require('./routes/adminRouter');
 const RegistrationRouter = require('./routes/registration');
 const LoginRouter = require('./routes/login');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs');
 

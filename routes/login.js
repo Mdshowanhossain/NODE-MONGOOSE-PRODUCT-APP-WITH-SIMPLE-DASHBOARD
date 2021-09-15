@@ -12,6 +12,14 @@ router.post('/post', async (req, res) => {
         const password = req.body.password;
         const findUserEmail = await RegistrationSchema.findOne({ email: email });
         const matchPassword = await bcrypt.compare(password, findUserEmail.password);
+
+        const token = await findUserEmail.generateAuthToken();
+        console.log('LogIn TOken', token);
+
+        res.cookie('loginCookie', token, {
+            expires: new Date(Date.now() + 5000)
+        })
+
         if (matchPassword === true) {
             res.redirect('/');
         }

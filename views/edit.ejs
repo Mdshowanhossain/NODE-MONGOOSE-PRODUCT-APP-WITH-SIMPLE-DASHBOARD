@@ -2,8 +2,7 @@
 
     <body>
         <section class="container mt-5">
-            <form action="/admin/edit/<%=getEditData%>" method="POST" type="application/x-www-urlencoded"
-                enctype="multipart/form-data">
+            <form action="/admin/edits/<%=getEditData._id%>" method="POST" type="application/x-www-form-urlencoded">
                 <div class="row mt-5">
                     <div class="col-5">
                         <label for="title">Title</label>
@@ -15,11 +14,6 @@
                         <input type="text" class="form-control" id="price" placeholder="Price" name="price"
                             value="<%= getEditData.price%>" required />
                     </div>
-                    <!-- <div class="col-3">
-                        <label for="image">Upload Image</label>
-                        <input type="file" class="form-control-file" id="image" name="image">
-                    </div> -->
-
                     <div class="row">
                         <div class="col-lg-8 col-12 col-md-8 mt-5 ">
                             <label for="description">Description</label>

@@ -20,20 +20,9 @@ const ProductSchema = new mongoose.Schema({
         type: String,
     },
 
-    slug: { type: String, slug: ["title", "description"], unique: true },
+    slug: { type: String, slug: ["title"], unique: true },
 
-    // slug: {
-    //     type: String,
-    //     slug: 'title',
-    //     slug_padding_size: 2,
-    //     unique: true
-    // }
 }, { timestamps: true })
-
-// ProductSchema.pre("save", function (next) {
-//     this.slug = this.title.split(" ").join("-");
-//     next();
-// });
 
 
 

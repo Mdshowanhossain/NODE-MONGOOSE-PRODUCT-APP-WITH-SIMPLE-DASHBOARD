@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const registration = new mongoose.Schema({
 
@@ -16,8 +17,34 @@ const registration = new mongoose.Schema({
     password: {
         type: String,
         require: true,
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            require: true,
+        }
+    }]
 }, { timestamps: true })
+
+
+registration.methods.generateAuthToken = async function (next) {
+    try {
+        const token = await jwt.sign({ _id: this._id }, process.env.SECRET_KEY)
+        this.tokens = this.tokens.concat({ token: token });
+        await this.save();
+        return token;
+    } catch (err) {
+        console.log(err.message);
+        res.send(err.message);
+    }
+
+
+    next();
+}
+
+
+
+
 
 registration.pre('save', async function (next) {
     try {
