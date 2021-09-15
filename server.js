@@ -11,6 +11,7 @@ const AddProduct = require('./routes/addProduct')
 const AdminRouter = require('./routes/adminRouter');
 const RegistrationRouter = require('./routes/registration');
 const LoginRouter = require('./routes/login');
+const secretRouter = require('./routes/secret');
 
 const PORT = process.env.PORT
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,7 @@ app.use('/addproduct', AddProduct);
 app.use('/admin', AdminRouter);
 app.use('/signup', RegistrationRouter);
 app.use('/login', LoginRouter);
+// app.use('/secret', secretRouter);
 
 app.listen(PORT, () => {
     console.log(`Your server is running at ${PORT}`)

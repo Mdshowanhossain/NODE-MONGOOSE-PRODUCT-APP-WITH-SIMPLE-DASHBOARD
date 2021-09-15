@@ -20,9 +20,9 @@ router.post('/signUpPostData', async (req, res) => {
             password: req.body.password,
         });
         const token = await postUserData.generateAuthToken();
-        console.log('Registration_Token', token)
+        // console.log('Registration_Token', token)
 
-        res.cookie('regCookie', token, {
+        res.cookie('cookies', token, {
             expires: new Date(Date.now() + 5000),
             httpOnly: true,
         })
