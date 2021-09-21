@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const RegistrationSchema = require('../schema/registrationSchema');
 const auth = require('../middleware/auth');
-
+const { loginAuth } = require('../middleware/login')
 
 router.get('/', (req, res) => {
     res.render('login')
@@ -13,32 +11,6 @@ router.get('/secret', auth, (req, res) => {
 
 })
 
-router.post('/post', async (req, res) => {
-    try {
-        const email = req.body.email;
-        const password = req.body.password;
-        const findUserEmail = await RegistrationSchema.findOne({ email: email });
-        const matchPassword = await bcrypt.compare(password, findUserEmail.password);
-
-        const token = await findUserEmail.generateAuthToken();
-        // console.log('LogIn TOken', token);
-        res.cookie('jwt', token, {
-            expires: new Date(Date.now() + 100000),
-            httpOnly: true,
-            secure: true,
-        });
-
-        if (matchPassword === true) {
-            res.redirect('/');
-        }
-        else {
-            res.send('Invalid Login Details');
-        }
-    }
-    catch (err) {
-        res.status(400).send(err.message);
-        console.log(err.message);
-    }
-})
+router.post('/post', loginAuth)
 
 module.exports = router;

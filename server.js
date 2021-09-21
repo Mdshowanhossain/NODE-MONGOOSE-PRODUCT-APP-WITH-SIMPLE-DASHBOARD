@@ -4,8 +4,6 @@ const app = express();
 require('./DB/db');
 require('dotenv').config();
 
-
-
 const HomeRouter = require('./routes/homeRouter');
 const AddProduct = require('./routes/addProduct')
 const AdminRouter = require('./routes/adminRouter');
@@ -24,10 +22,7 @@ app.use('/addproduct', AddProduct);
 app.use('/admin', AdminRouter);
 app.use('/signup', RegistrationRouter);
 app.use('/login', LoginRouter);
-app.use('/logout', logoutRouter)
-// app.use('/secret', secretRouter);
-
-
+app.use('/logout', logoutRouter);
 
 app.listen(PORT, () => {
     console.log(`Your server is running at ${PORT}`)

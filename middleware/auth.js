@@ -20,24 +20,4 @@ const auth = async (req, res, next) => {
     }
 }
 
-
-
-
-
-
-
-// const auth = async (req, res, next) => {
-//     try {
-//         const token = await req.cookies.jwt;
-//         console.log(token)
-//         // const verifyUser = await jwt.verify(token, process.env.SECRET_KEY);
-//         // console.log(verifyUser)
-//         // const user = await RegistrationSchema.findOne({ _id: verifyUser._id });
-//         // console.log(user);
-//         // next();
-//     } catch (err) {
-//         res.status(401).send(err);
-//         console.log(err.message);
-//     }
-// }
 module.exports = auth
