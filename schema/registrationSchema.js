@@ -43,9 +43,6 @@ registration.methods.generateAuthToken = async function (next) {
 }
 
 
-
-
-
 registration.pre('save', async function (next) {
     try {
         if (this.isModified("password")) {

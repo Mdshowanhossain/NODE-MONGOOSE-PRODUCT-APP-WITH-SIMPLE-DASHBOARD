@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const ProductSchema = require('../schema/productSchema');
-router.get('/', (req, res) => {
+const auth = require('../middleware/auth');
+
+
+router.get('/', auth, (req, res) => {
     res.render('admin')
 })
 router.get('edit/', (req, res) => {

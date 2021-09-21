@@ -22,7 +22,7 @@ router.post('/signUpPostData', async (req, res) => {
         const token = await postUserData.generateAuthToken();
         // console.log('Registration_Token', token)
 
-        res.cookie('cookies', token, {
+        res.cookie('jwt', token, {
             expires: new Date(Date.now() + 5000),
             httpOnly: true,
         })

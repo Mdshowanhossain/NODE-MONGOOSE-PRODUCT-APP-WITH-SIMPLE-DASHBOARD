@@ -22,13 +22,11 @@ router.post('/post', async (req, res) => {
 
         const token = await findUserEmail.generateAuthToken();
         // console.log('LogIn TOken', token);
-
-        res.cookie('cookies', token, {
-            expires: new Date(Date.now() + 1000),
+        res.cookie('jwt', token, {
+            expires: new Date(Date.now() + 100000),
             httpOnly: true,
+            secure: true,
         });
-
-        // console.log('COOKIE PARSER', req.cookies.loginCookie)
 
         if (matchPassword === true) {
             res.redirect('/');
